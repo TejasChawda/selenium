@@ -6,10 +6,11 @@ import java.io.IOException;
 
 public class LoginPage extends BaseClass{
 
-    public String loginUrl = BASE_URL + utils.getUrl("login");
+    public String loginUrl;
 
     public LoginPage(WebDriver driver) throws IOException {
         super(driver);
+        loginUrl = BASE_URL + utils.getUrl("login");
     }
 
     public void navigateToLoginPage() throws IOException {
