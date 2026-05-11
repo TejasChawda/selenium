@@ -1,0 +1,7 @@
+{
+  "LOGIN" : {
+    "USER_NAME" : "//input[@name='username']",
+    "PASSWORD" : "//input[@name='password']",
+    "LOGIN_BUTTON" : ".orangehrm-login-button"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "ORANGE_HRM" : {
+    "BASE_URL" : "https://opensource-demo.orangehrmlive.com/web/index.php",
+    "PAGES":{
+      "LOGIN" : "/auth/login",
+      "DASHBOARD" : "/dashboard/index"
+    }
+  }
+}
