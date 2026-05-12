@@ -90,10 +90,7 @@ public class BaseClass {
     public Wait<WebDriver> constructWait(String type, int seconds){
         return switch (type) {
             case "explicit" -> new WebDriverWait(driver, Duration.ofSeconds(seconds));
-            case "fluent" -> new FluentWait<>(driver)
-                    .withTimeout(Duration.ofSeconds(seconds))
-                    .pollingEvery(Duration.ofMillis(500))
-                    .ignoring(NoSuchElementException.class);
+            case "fluent" -> doFluentWait(seconds, 500);
             default -> null;
         };
     }
