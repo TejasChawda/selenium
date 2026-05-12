@@ -23,9 +23,8 @@ public class HomePageTests extends BaseTest {
         loginPage.enterPassword("admin123");
         homePage = loginPage.clickOnLoginButton();
         homePage.clickOnSideBarMenuItem("admin");
-        String highlightedItem = homePage.getHighlightedMenuItem();
-        String currUrl = driver.getCurrentUrl();
 
-        Assert.assertTrue(currUrl.contains(highlightedItem.toLowerCase()));
+        Assert.assertTrue(driver.getCurrentUrl().contains
+                (homePage.getHighlightedMenuItem().toLowerCase()));
     }
 }
