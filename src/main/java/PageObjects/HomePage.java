@@ -51,19 +51,61 @@ public class HomePage extends BaseClass{
     }
 
     public void scrollDownUsingPixels(int x, int y){
-        //We use jsexecutor, because selenium doesn't have the control for scrolling,
-        //it is controlled by js and DOM, so in order to use js, we use jsexecutor.
-        //Based on the below code, we can understand that we create a jsexecutor object
-        //and we induce js code into it using jsobject.executeScript()
-
-        //Here is a reason why selenium doesn't support scrolling.
-        //Selenium is only built for DOM interaction, not DOM manipulation
-        //Scrolling doesn't mean DOM manipulation, the DOM stays the same
-        //But the view port changes whenever there is a scroll involved.
-        //This impacts what to be rendered on the screen. Thus selenium doesn't support
-        //Scrolling.
-
-        //Similarly we can use scrollIntoView in the same manner with jsexecutor
+        /*
+         * We use JavascriptExecutor because Selenium itself does not provide
+         * direct control over scrolling behavior.
+         *
+         * Scrolling is handled internally by the browser using JavaScript
+         * and viewport rendering mechanisms.
+         *
+         * So, in Selenium, whenever we want to perform scrolling,
+         * we execute JavaScript code through JavascriptExecutor.
+         *
+         * Example:
+         *
+         * JavascriptExecutor js = (JavascriptExecutor) driver;
+         * js.executeScript("window.scrollBy(0,500)");
+         *
+         * Here:
+         * 1. We create a JavascriptExecutor reference
+         * 2. We inject JavaScript code into the browser using executeScript()
+         *
+         * ------------------------------------------------------------
+         *
+         * Why Selenium does not natively support scrolling:
+         *
+         * Selenium is mainly designed for browser automation and DOM interaction,
+         * not direct browser rendering or viewport manipulation.
+         *
+         * During scrolling:
+         * - The DOM structure usually remains exactly the same
+         * - Only the viewport position changes
+         *
+         * In other words:
+         * - The webpage/document does not move
+         * - The visible area (viewport) moves over the document
+         *
+         * Since scrolling affects rendering and viewport state rather than
+         * the actual DOM structure, Selenium delegates scrolling control
+         * to the browser's JavaScript engine.
+         *
+         * ------------------------------------------------------------
+         *
+         * Similarly, methods like scrollIntoView() are also JavaScript methods.
+         *
+         * Example:
+         *
+         * js.executeScript(
+         *      "arguments[0].scrollIntoView(true);",
+         *      element
+         * );
+         *
+         * Here the browser executes:
+         *
+         *      element.scrollIntoView(true)
+         *
+         * through JavaScript inside the page.
+         */
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.scrollBy("+x+","+y+");");
     }
