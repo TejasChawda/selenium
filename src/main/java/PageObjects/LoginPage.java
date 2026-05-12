@@ -27,10 +27,10 @@ public class LoginPage extends BaseClass{
         enter("admin123", "xpath", passLocator, 10000);
     }
 
-    public DashboardPage clickOnLoginButton() throws IOException {
+    public HomePage clickOnLoginButton() throws IOException {
         String loginButton = utils.getLocatorString("login", "login_button");
         clickButton(loginButton, "css", 10000);
 
-        return new DashboardPage(driver);
+        return new HomePage(driver);
     }
 }

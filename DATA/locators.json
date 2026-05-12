@@ -3,5 +3,9 @@
     "USER_NAME" : "//input[@name='username']",
     "PASSWORD" : "//input[@name='password']",
     "LOGIN_BUTTON" : ".orangehrm-login-button"
+  },
+  "HOME" : {
+    "SIDEBAR_MENU_ITEMS" : ".oxd-main-menu-item-wrapper",
+    "SIDEBAR_MENU_ITEM_NAME" : ".oxd-main-menu-item--name"
   }
 }

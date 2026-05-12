@@ -55,4 +55,8 @@ public class Utils {
 
         return node.path(page).path(element).asText();
     }
+
+    public JsonNode getData(String key) throws IOException {
+        return readJson("DATA/data.json", key.toUpperCase());
+    }
 }

@@ -1,22 +1,20 @@
-import PageObjects.DashboardPage;
+import PageObjects.HomePage;
 import PageObjects.LoginPage;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class LoginTests extends BaseClass{
+public class LoginTests extends BaseTest {
 
     LoginPage loginPage;
-    DashboardPage dashboard;
+    HomePage dashboard;
 
-    {
-        try {
-            loginPage = new LoginPage(driver);
-            dashboard = new DashboardPage(driver);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    @BeforeClass
+    public void initialiseObjects() throws IOException {
+        loginPage = new LoginPage(driver);
+        dashboard = new HomePage(driver);
     }
 
     @Test
