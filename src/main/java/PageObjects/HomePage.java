@@ -1,8 +1,6 @@
 package PageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 
@@ -50,5 +48,27 @@ public class HomePage extends BaseClass{
                 break;
             }
         }
+    }
+
+    public void scrollDownUsingPixels(int x, int y){
+        //We use jsexecutor, because selenium doesn't have the control for scrolling,
+        //it is controlled by js and DOM, so in order to use js, we use jsexecutor.
+        //Based on the below code, we can understand that we create a jsexecutor object
+        //and we induce js code into it using jsobject.executeScript()
+
+        //Here is a reason why selenium doesn't support scrolling.
+        //Selenium is only built for DOM interaction, not DOM manipulation
+        //Scrolling doesn't mean DOM manipulation, the DOM stays the same
+        //But the view port changes whenever there is a scroll involved.
+        //This impacts what to be rendered on the screen. Thus selenium doesn't support
+        //Scrolling.
+
+        //Similarly we can use scrollIntoView in the same manner with jsexecutor
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("window.scrollBy("+x+","+y+");");
+    }
+
+    public void scrollDownRelativeToAnElement(){
+
     }
 }
